@@ -88,7 +88,7 @@ This is an **illustrative example**, not a measurement from the project. The tim
 
 ## Limitations and next steps
 
-See [measurement limitations](docs/limitations.md). Potential next steps include testing the logger over a known period, checking for missing or irregular timestamps, logging humidity, exporting parsed readings to CSV, and plotting temperature over time. Any enhanced version should be clearly distinguished from the original implementation, and any results should be based on real collected data.
+See [measurement limitations](docs/limitations.md). The included Python analysis script can parse the text log into CSV and calculate descriptive statistics. Potential next steps include testing the logger over a known period, checking for missing or irregular timestamps, logging humidity, and plotting temperature over time. Any enhanced version should be clearly distinguished from the original implementation, and any results should be based on real collected data.
 
 ## Repository contents
 
@@ -96,7 +96,8 @@ See [measurement limitations](docs/limitations.md). Potential next steps include
 - `powershell/temperature_logger.ps1` — serial reader and timestamped text logger.
 - `docs/wiring.md` — wiring and setup notes.
 - `docs/limitations.md` — measurement and interpretation limits.
-- `analysis/README.md` — reproducible analysis plan for future data.
+- `analysis/README.md` — instructions for local data analysis.
+- `analysis/analyze_log.py` — parses the text log into a CSV and descriptive summary using Python's standard library.
 
 ## Data and privacy
 
