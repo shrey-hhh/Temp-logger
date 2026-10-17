@@ -1,0 +1,18 @@
+# Local logs may reveal personal routines
+*.txt
+*.csv
+!README.md
+
+# Keep the directory placeholder but not local datasets
+data/*
+!data/.gitkeep
+
+# Local analysis output
+analysis/output/
+*.png
+*.svg
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
