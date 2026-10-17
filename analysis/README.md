@@ -1,17 +1,29 @@
-# Data analysis plan
+# Data analysis
 
-No measured dataset is included here yet, so this document does not claim that a temperature pattern has been found.
+The repository includes a standard-library Python script that parses the text log into a CSV and produces a descriptive summary. No real measurement dataset is committed.
 
-## Workflow
+## Run the analysis
 
-1. Keep a copy of the raw log locally; do not publish personal logs by default.
-2. Parse each timestamp and Fahrenheit reading from the text format documented in the root README.
-3. Check parse failures, duplicate timestamps, missing intervals, and logging-session boundaries.
-4. Plot temperature against time, marking gaps clearly.
-5. After validating the parsed data, calculate descriptive statistics such as valid reading count, observation duration, minimum, maximum, and median.
-6. For comparisons between nights, define consistent time windows and report missing data.
-7. Describe findings as observations from this sensor and placement, not proof of a medical cause.
+Install Python 3.10 or newer, then run from the repository root:
 
-## Reproducibility
+```powershell
+python analysis/analyze_log.py "$HOME\Desktop\room_temp_log.txt"
+```
 
-Record the analyzed date range, sensor placement, software version, parsing assumptions, and excluded intervals. Keep personal raw logs and charts that reveal sensitive routines out of the public repository.
+By default, the script creates `temperature_readings.csv` and `temperature_summary.txt` in the current directory. Both are excluded from version control by `.gitignore`. You can choose different output paths:
+
+```powershell
+python analysis/analyze_log.py "$HOME\Desktop\room_temp_log.txt" --csv "analysis/output/readings.csv" --report "analysis/output/summary.txt"
+```
+
+The parser skips session-start marker lines, reads timestamped Fahrenheit values, reports unparsed non-header lines, and calculates descriptive statistics and intervals between consecutive readings. It sorts parsed readings by timestamp before analysis.
+
+## Workflow and interpretation
+
+1. Keep raw logs local; they may reveal personal routines.
+2. Check unparsed lines and interval gaps before interpreting summary statistics.
+3. Plot the generated CSV separately if a visual trend is useful.
+4. For comparisons between nights, define consistent time windows and report missing data.
+5. Describe findings as observations from this sensor and placement. The data cannot establish the cause of a person's symptoms.
+
+The script has not been run against the user's actual log because no log file has been provided. Do not treat example values as experimental results.
